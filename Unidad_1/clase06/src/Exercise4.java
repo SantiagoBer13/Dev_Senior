@@ -4,6 +4,20 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
+/*
+ * Generador y Verificador de UIDs para Empleados
+ * 
+ * Instrucciones para Ingresar UIDs:
+ * - Cada UID debe ser una cadena de exactamente 10 caracteres alfanuméricos (sin espacios ni caracteres especiales).
+ * - Requisitos para que un UID sea válido:
+ *     1. Debe contener al menos 2 letras mayúsculas.
+ *     2. Debe contener al menos 3 dígitos numéricos.
+ *     3. Debe estar compuesto únicamente de caracteres alfanuméricos (letras y números).
+ *     4. No debe contener caracteres repetidos.
+ * - Ejemplo de un UID válido: "A1B2C3D4E5".
+ * - Escribe "stop" para detener el ingreso de UIDs y proceder con la validación.
+ */
+
 public class Exercise4 {
     static List<String> uids = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
@@ -23,10 +37,13 @@ public class Exercise4 {
             uids.add(input);
         }
 
-        uids.stream().forEach(uid -> {
-            System.out.println(uid + (verificarUID(uid) ? " - Válido" : " - Inválido"));
-        });
-
+        if(uids.size() > 0){
+            uids.stream().forEach(uid -> {
+                System.out.println(uid + (verificarUID(uid) ? " - Válido" : " - Inválido"));
+            });
+        }else{
+            System.out.println("No ingresaste números de identificación único UID.");
+        }
     }
 
     public static boolean verificarUID(String uid) {
@@ -41,11 +58,9 @@ public class Exercise4 {
         int countMayusculas = 0;
 
         for (int i = 0; i < uid.length(); i++) {
-
             if (Character.isUpperCase(uid.charAt(i))) {
                 countMayusculas++;
             }
-
         }
 
         return countMayusculas;
