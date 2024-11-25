@@ -6,18 +6,58 @@ import java.util.Scanner;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+// Documentación de Stream: https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#max-java.util.Comparator-
+
+/*
+ * Documentación sobre cómo ingresar los datos:
+ *
+ * El programa permite registrar las ventas de productos de una tienda. Los datos deben ingresarse 
+ * en el formato específico de la siguiente manera:
+ *
+ * - En cada línea, ingresa un registro con el formato: "producto,cantidad,precio_unitario".
+ *   - "producto": el nombre del producto (texto).
+ *   - "cantidad": el número de unidades vendidas (número entero).
+ *   - "precio_unitario": el precio por unidad del producto (número decimal).
+ * 
+ * Ejemplos de entradas válidas:
+ * - "camisa,2,20.00" -> Producto: Camisa, Cantidad: 2, Precio unitario: 20.00
+ * - "pantalon,1,35.50" -> Producto: Pantalón, Cantidad: 1, Precio unitario: 35.50
+ * - "zapatos,3,50.00" -> Producto: Zapatos, Cantidad: 3, Precio unitario: 50.00
+ *
+ * Ingresar cada registro de ventas **en una línea separada**, presionando **Enter** después de cada uno.
+ *
+ * Ejemplo:
+ * - Primero, ingresa "camisa,2,20.00" y presiona **Enter**.
+ * - Luego, ingresa "pantalon,1,35.50" y presiona **Enter**.
+ * - Luego, ingresa "zapatos,3,50.00" y presiona **Enter**.
+ *
+ * Puedes agregar tantos registros como desees. Para terminar de ingresar datos, escribe **'stop'** y presiona **Enter**.
+ *
+ * Ejemplo de múltiples registros válidos:
+ * "camisa,2,20.00"
+ * "pantalon,1,35.50"
+ * "zapatos,3,50.00"
+ * "camisa,1,20.00"
+ * "pantalon,2,35.50"
+ * 
+ * Si se ingresa un formato incorrecto, el programa mostrará un mensaje de error y pedirá que se ingrese el registro nuevamente con el formato correcto.
+ * 
+ * Recuerda: una vez ingresados todos los productos, puedes terminar el proceso escribiendo 'stop'.
+ */
+
 public class Exercise1 {
 
-    static  List<String[]> ventas = new ArrayList<>();
-    static Map<String, Integer> numeroVentas = new HashMap<>();
+    static List<String[]> sales = new ArrayList<>();
+    static Map<String, Integer> numSales = new HashMap<>();
     static Scanner sc = new Scanner(System.in);
     Function<String, Integer> toInt = Integer::parseInt;
 
     public static void main(String[] args) {
         System.out.println("Análisis de Ventas de una Tienda");
-        ingresarVentas();
+        addSales();
 
         String menu = """
+
                 Menú
                 1) Calcular el Ingreso Total.
                 2) Contar Ventas por Producto.
@@ -28,14 +68,14 @@ public class Exercise1 {
                 """;
 
         while (true) {
-            System.out.println(menu);
+            System.out.print(menu);
             String option = sc.nextLine();
             switch (option) {
-                case "1" -> calcularIngresoTotal();
-                case "2" -> contarVentasPorProducto();
-                case "3" -> filtrarVentasMayores();
-                case "4" -> obtenerProductoVendido();
-                case "5" -> ingresarVentas();
+                case "1" -> calIncomeTotal();
+                case "2" -> showSalesByProducto();
+                case "3" -> filterHigherSales();
+                case "4" -> getMostPurchasedProduct();
+                case "5" -> addSales();
                 case "6" -> {
                     System.out.println("Saliendo...");
                     sc.close();
@@ -46,63 +86,72 @@ public class Exercise1 {
         }
     }
 
-    private static void ingresarVentas() {
+    private static void addSales() {
         System.out.println("Ingresa el registro 'producto,cantidad,precio_unitario'. Escribe 'stop' para terminar:");
         while (true) {
             String input = sc.nextLine();
             if (input.equalsIgnoreCase("stop"))
                 break;
 
-            String[] registro = input.split(",");
-            if (registro.length == 3) {
-                ventas.add(registro);
+            String[] row = input.split(",");
+            if (row.length == 3) {
+                sales.add(row);
             } else {
                 System.out.println("Registro inválido. Debe tener el formato 'producto,cantidad,precio_unitario'.");
             }
         }
     }
 
-    // public static double calculateIngresoTotal(List<String[]> ventas){
-    // double ingresoTotal = 0;
-    // for (String[] venta : ventas) {
-    // ingresoTotal += Double.parseDouble(venta[1]) * Double.parseDouble(venta[2]);
+    // public static double calculateIngresoTotal(List<String[]> sales){
+    // double incomeTotal = 0;
+    // for (String[] sale : sales) {
+    // incomeTotal += Double.parseDouble(sale[1]) * Double.parseDouble(sale[2]);
     // }
-    // return ingresoTotal;
+    // return incomeTotal;
     // }
 
-    private static void calcularIngresoTotal() {
-        double ingresoTotal = ventas.stream()
-                .mapToDouble(venta -> Double.parseDouble(venta[1]) * Double.parseDouble(venta[2]))
+    private static void calIncomeTotal() {
+        double incomeTotal = sales.stream()
+                .mapToDouble(sale -> Double.parseDouble(sale[1]) * Double.parseDouble(sale[2]))
                 .sum();
-        System.out.printf("Ingreso total generado por las ventas: %.2f.%n", ingresoTotal);
+        System.out.printf("%nIngreso total generado por las ventas: %.2f.%n", incomeTotal);
     }
 
-    // public static void contarVentasPorProducto(){
-    // numeroVentas = new HashMap<>();
-    // for (String[] venta : ventas) {
+    // public static void countSalesByProducto(){
+    // numSales = new HashMap<>();
+    // for (String[] venta : sales) {
     // int cantidad = Integer.parseInt(venta[1]);
-    // if(numeroVentas.containsKey(venta[0])){
-    // cantidad += numeroVentas.get(venta[0]);
-    // numeroVentas.put(venta[0], cantidad);
+    // if(numSales.containsKey(venta[0])){
+    // cantidad += numSales.get(venta[0]);
+    // numSales.put(venta[0], cantidad);
     // }else{
-    // numeroVentas.put(venta[0], cantidad);
+    // numSales.put(venta[0], cantidad);
     // }
     // }
     // }
 
-    public static void contarVentasPorProducto() {
-        numeroVentas = ventas.stream()
+    public static void countSalesByProduct() {
+        numSales = sales.stream()
                 .collect(Collectors.toMap(
-                        venta -> venta[0],
-                        venta -> Integer.parseInt(venta[1]),
+                        sale -> sale[0],
+                        sale -> Integer.parseInt(sale[1]),
                         Integer::sum));
-        for (Map.Entry<String, Integer> entry : numeroVentas.entrySet()) {
-            System.out.println("Nombre: " + entry.getKey() + " | Cantidad: " + entry.getValue());
+    }
+
+    public static void showSalesByProducto(){
+        countSalesByProduct();
+        System.out.println();
+        if(numSales.size() > 0){
+            for (Map.Entry<String, Integer> sales : numSales.entrySet()) {
+                System.out.println("Nombre: " + sales.getKey() + " | Cantidad: " + sales.getValue());
+            }
+        }else{
+            System.out.println("No hay ventas registradas.");
         }
     }
 
     // public static void filterVentasMayores(int monto){
-    // for (String[] venta : ventas) {
+    // for (String[] venta : sales) {
     // int ingresoTotal = Integer.parseInt( venta[1]) * Integer.parseInt(venta[2]);
     // if(ingresoTotal > monto){
     // System.out.printf("Nombre: %s | Ingreso Total: %d.%n", venta[0],
@@ -111,32 +160,35 @@ public class Exercise1 {
     // }
     // }
 
-    public static void filtrarVentasMayores() {
-
+    public static void filterHigherSales() {
+        System.out.println();
         while (true) {
-            System.out.print("Ingresa el monto: ");
-            int monto = Integer.parseInt(sc.nextLine());
-            if (monto > 0) {
-                ventas.stream()
-                        .filter(venta -> Integer.parseInt(venta[1]) * Integer.parseInt(venta[2]) > monto)
-                        .forEach(venta -> {
-                            int ingresoTotal = Integer.parseInt(venta[1]) * Integer.parseInt(venta[2]);
-                            System.out.printf("Nombre: %s | Ingreso Total: %d.%n", venta[0], ingresoTotal);
-                        });
+            if(sales.size() > 0){
+                System.out.print("Ingresa el monto: ");
+                Double monto = Double.parseDouble(sc.nextLine());
+                if (monto > 0) {
+                    sales.stream()
+                            .filter(sale -> Double.parseDouble(sale[1]) * Double.parseDouble(sale[2]) > monto)
+                            .forEach(sale -> {
+                                Double incomeTotal = Double.parseDouble(sale[1]) * Double.parseDouble(sale[2]);
+                                System.out.printf("Nombre: %s | Ingreso Total: %.2f.%n", sale[0], incomeTotal);
+                            });
+                    break;
+                } else {
+                    System.out.println("Ingresa un monto positivo.");
+                }
+            }else{
+                System.out.println("No hay ventas registradas.");
                 break;
-            } else {
-                System.out.println("Ingresa un monto positivo.");
             }
-
         }
-
     }
 
-    // public static void obtenerProductoVendido(){
+    // public static void getMostPurchasedProduct(){
     // contarVentasProducto();
     // int max = 0, count = 0;
     // String data = "";
-    // for (Map.Entry<String, Integer> venta : numeroVentas.entrySet()) {
+    // for (Map.Entry<String, Integer> venta : numSales.entrySet()) {
     // if(venta.getValue() >= max){
     // if(venta.getValue() > max && count > 0){
     // data = "";
@@ -155,23 +207,26 @@ public class Exercise1 {
     // }
     // }
 
-    public static void obtenerProductoVendido() {
-        contarVentasPorProducto();
-
-        int max = numeroVentas.values().stream().max(Integer::compare).orElse(0);
-
-        List<Map.Entry<String, Integer>> productosMasVendidos = numeroVentas.entrySet().stream()
-                .filter(entry -> entry.getValue() == max)
-                .toList();
-
-        String mensaje = productosMasVendidos.stream()
-                .map(entry -> String.format("Nombre: %s | Cantidad: %d", entry.getKey(), entry.getValue()))
-                .collect(Collectors.joining(", "));
-
-        if (productosMasVendidos.size() == 1) {
-            System.out.printf("Producto más vendido:%n%s%n", mensaje);
-        } else {
-            System.out.printf("Productos más vendidos:%n%s%n", mensaje);
+    public static void getMostPurchasedProduct() {
+        countSalesByProduct();
+        if (sales.size() > 0) {
+            int max = numSales.values().stream().max(Integer::compare).get();
+    
+            List<Map.Entry<String, Integer>> productosMorePurchased = numSales.entrySet().stream()
+                    .filter(sale -> sale.getValue() == max)
+                    .toList();
+    
+            String message = productosMorePurchased.stream()
+                    .map(sale -> String.format("Nombre: %s | Cantidad: %d", sale.getKey(), sale.getValue()))
+                    .collect(Collectors.joining(", "));
+    
+            if (productosMorePurchased.size() == 1) {
+                System.out.printf("Producto más vendido:%n%s%n", message);
+            } else {
+                System.out.printf("Productos más vendidos:%n%s%n", message);
+            }
+        }else{
+            System.out.println("No hay ventas registradas.");
         }
     }
 }
