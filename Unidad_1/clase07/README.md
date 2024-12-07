@@ -1,6 +1,6 @@
 # Ejercicios
 
-## Tres en línea (tic-tac-toe)
+## [Tres en línea (tic-tac-toe)](src/Triqui.java)
 
 ![Tres en línea](https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Tic_tac_toe.svg/783px-Tic_tac_toe.svg.png)  
 _Tomado de [Tres en línea](https://es.wikipedia.org/wiki/Tres_en_l%C3%ADnea) en wikipedia_.
@@ -22,7 +22,7 @@ El objetivo es desarrollar un programa en Java que permita a dos jugadores jugar
 1. **Finalizar el Juego**: El juego debe terminar cuando haya un ganador o un empate, y debe mostrar un mensaje apropiado indicando el resultado.
 1. **Interacción con el Usuario**: El programa debe solicitar a los jugadores que ingresen sus movimientos y proporcionar retroalimentación sobre el estado del juego después de cada movimiento.
 
-## Ahorcado
+## [Ahorcado](src/Ahorcado.java)
 
 ![Ahorcado](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Hangman.svg/330px-Hangman.svg.png)  
 _Tomado de [Ahorcado (juego)](https://es.wikipedia.org/wiki/Ahorcado_(juego)) en wikipedia_.
@@ -82,7 +82,7 @@ Letras intentadas: Z J L H A E I O S
 
 ```
 
-## Conecta 4
+## [Conecta 4](src/Conecta_4.java)
 
 ![Conecta 4](https://th.bing.com/th/id/OIP.-dva42mI9sPCMuL32up1JgAAAA?rs=1&pid=ImgDetMain)  
 _Tomado de [Conecta 4](https://es.wikipedia.org/wiki/Conecta_4) en wikipedia_.
