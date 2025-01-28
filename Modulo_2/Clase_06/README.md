@@ -1,4 +1,4 @@
-# Ejercicio: Implementar el Patrón de Diseño Observer
+# [Ejercicio: Implementar el Patrón de Diseño Observer](src/Exercise_1/App.java)
 
 ## Contexto
 
@@ -39,3 +39,49 @@ Cliente 1: El precio del producto 'Laptop' cambió a $1200.
 Cliente 2: El precio del producto 'Laptop' cambió a $1200.
 Cliente 1: El precio del producto 'Laptop' cambió a $1150.
 Cliente 3: El precio del producto 'Laptop' cambió a $1150.
+```
+
+# [Enunciado de práctica para el patrón de diseño Strategy](src/Exercise_2/Client.java)
+
+Implementa un sistema para calcular precios de productos en una tienda online. La tienda ofrece diferentes estrategias de descuento según la temporada o las promociones actuales:
+
+1. **Descuento de temporada**: Aplica un 20% de descuento a todos los productos.
+2. **Promoción por compra en volumen**: Aplica un 15% de descuento si el cliente compra más de 10 unidades de un producto.
+3. **Descuento para clientes VIP**: Aplica un 25% de descuento para clientes registrados como VIP.
+
+## Requisitos:
+
+1. Crea una **interfaz común** llamada `DiscountStrategy` que defina un método `applyDiscount(double price, int quantity)`.
+2. Implementa **tres estrategias concretas** para cada tipo de descuento:
+   - `SeasonalDiscountStrategy`
+   - `VolumeDiscountStrategy`
+   - `VipDiscountStrategy`
+3. Desarrolla una clase **Context** llamada `PriceCalculator` que permita aplicar la estrategia de descuento seleccionada.
+4. Diseña un **componente cliente** que permita:
+   - Seleccionar dinámicamente la estrategia de descuento.
+   - Calcular el precio final de un producto aplicando la estrategia seleccionada.
+
+## Ejemplo de uso:
+
+```java
+// Crear las estrategias
+DiscountStrategy seasonalDiscount = new SeasonalDiscountStrategy();
+DiscountStrategy volumeDiscount = new VolumeDiscountStrategy();
+DiscountStrategy vipDiscount = new VipDiscountStrategy();
+
+// Crear el contexto y establecer una estrategia
+PriceCalculator priceCalculator = new PriceCalculator(seasonalDiscount);
+
+// Calcular el precio con descuento de temporada
+double finalPrice = priceCalculator.calculatePrice(100.0, 5); // Precio inicial: $100, Cantidad: 5
+System.out.println("Precio con descuento de temporada: $" + finalPrice);
+
+// Cambiar a estrategia de descuento por volumen
+priceCalculator.setDiscountStrategy(volumeDiscount);
+finalPrice = priceCalculator.calculatePrice(100.0, 12); // Precio inicial: $100, Cantidad: 12
+System.out.println("Precio con descuento por volumen: $" + finalPrice);
+
+// Cambiar a estrategia de descuento para clientes VIP
+priceCalculator.setDiscountStrategy(vipDiscount);
+finalPrice = priceCalculator.calculatePrice(100.0, 1); // Precio inicial: $100, Cantidad: 1
+System.out.println("Precio para cliente VIP: $" + finalPrice);
