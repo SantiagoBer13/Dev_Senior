@@ -36,3 +36,24 @@ El motor está apagado.
 La rueda ha sido inflada.
 La rueda ha sido desinflada.
 El automóvil ha arrancado.
+```
+
+# Ejercicio: Uso de Clases Internas Anónimas en Java
+
+## Descripción
+
+En este ejercicio, aplicarás **clases internas anónimas** para simplificar la implementación de un sistema de monitoreo.
+
+Supón que tienes un sistema que necesita monitorear diferentes aspectos de una aplicación en ejecución. Se requiere crear tres módulos de monitoreo:
+
+1. **Monitoreo de Rendimiento**: Se encarga de registrar estadísticas de uso de CPU y memoria.
+2. **Monitoreo de Errores**: Se encarga de registrar cualquier error que ocurra en el sistema.
+3. **Monitoreo de Seguridad**: Se encarga de registrar intentos de acceso no autorizado.
+
+El sistema debe usar la siguiente interfaz:
+
+```java
+public interface MonitoringSystem {
+    void startMonitoring();
+}
+
