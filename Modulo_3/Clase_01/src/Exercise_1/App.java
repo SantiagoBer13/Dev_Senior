@@ -1,6 +1,5 @@
 package Exercise_1;
 
-import java.util.Map;
 import java.util.Scanner;
 
 public class App {
