@@ -14,7 +14,7 @@ Desarrolla un sistema de gestión de inventario que permita a los usuarios agreg
 1. Utiliza bloques `try-catch` para manejar las excepciones lanzadas por los métodos del `Inventario`. Proporciona mensajes de error adecuados para el usuario.
 1. Crea una clase principal que permita al usuario interactuar con el inventario y maneje las excepciones adecuadamente.
 
-## Ejercicio 2 - Sistema de Gestión de Reservas de Hotel
+## [Ejercicio 2 - Sistema de Gestión de Reservas de Hotel](src/Exercise_2/App.java)
 Desarrolla un sistema de gestión de reservas de hotel que permita a los usuarios registrar clientes, crear reservas y buscar reservas.
 
 ### Requisitos:
