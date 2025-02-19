@@ -1,4 +1,4 @@
-# 📝 Taller: Implementación de Manejo de Errores y Logging en un Sistema de Gestión de Usuarios  
+# [📝 Taller: Implementación de Manejo de Errores y Logging en un Sistema de Gestión de Usuarios](exercise/src/main/java/com/code/Main.java)  
 
 ## 🎯 Objetivo  
 Desarrollar un sistema de gestión de usuarios que implemente un mecanismo robusto de manejo de errores y registro de eventos mediante un sistema de logging. Se espera que el programa capture y registre errores de manera estructurada, diferenciando eventos informativos, advertencias y errores críticos.  
