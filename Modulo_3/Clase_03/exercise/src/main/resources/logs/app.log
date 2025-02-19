@@ -1,0 +1,29 @@
+23:02:08.422 [main] DEBUG com.code.UserManager - Adding user Cesar with email O4rNj@example.com and occupation Developer
+23:02:08.435 [main] DEBUG com.code.UserManager - Validation name Cesar
+23:02:08.441 [main] INFO  com.code.UserManager - Name validated
+23:02:08.443 [main] DEBUG com.code.UserManager - Validation email O4rNj@example.com
+23:02:08.444 [main] INFO  com.code.UserManager - Email validated
+23:02:08.446 [main] DEBUG com.code.UserManager - Validation occupation Developer
+23:02:08.447 [main] INFO  com.code.UserManager - Occupation validated
+23:02:08.449 [main] DEBUG com.code.UserManager - Adding user Cesar with email O4rNj@example.com and occupation Developer
+23:02:08.507 [main] INFO  com.code.UserManager - User added successfully
+23:02:08.515 [main] DEBUG com.code.UserManager - Adding user  with email O4rNjexample.com and occupation 
+23:02:08.516 [main] DEBUG com.code.UserManager - Validation name 
+23:02:08.522 [main] WARN  com.code.UserManager - name cannot be empty
+23:02:08.527 [main] DEBUG com.code.UserManager - Validation email O4rNjexample.com
+23:02:08.534 [main] WARN  com.code.UserManager - email must contain @
+23:02:08.539 [main] DEBUG com.code.UserManager - Validation occupation 
+23:02:08.544 [main] WARN  com.code.UserManager - occupation cannot be empty
+23:02:08.547 [main] INFO  com.code.UserManager - User not added
+23:02:08.557 [main] DEBUG com.code.UserManager - Getting user with id 1
+23:02:08.559 [main] INFO  com.code.UserManager - User found
+23:02:08.609 [main] DEBUG com.code.UserManager - Getting user with id 10
+23:02:08.612 [main] WARN  com.code.UserManager - Id user not found
+23:02:08.673 [main] DEBUG com.code.UserManager - Deleting user with id 1
+23:02:08.683 [main] DEBUG com.code.UserManager - Getting user with id 1
+23:02:08.798 [main] INFO  com.code.UserManager - User found
+23:02:08.938 [main] INFO  com.code.UserManager - User deleted
+23:02:09.077 [main] DEBUG com.code.UserManager - Deleting user with id 10
+23:02:09.130 [main] DEBUG com.code.UserManager - Getting user with id 10
+23:02:09.181 [main] WARN  com.code.UserManager - Id user not found
+23:02:09.240 [main] WARN  com.code.UserManager - Id user not found
