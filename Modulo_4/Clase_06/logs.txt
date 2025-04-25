@@ -1,0 +1,5 @@
+INFO - Inicio del sistema
+ERROR - Conexión fallida
+ERROR - Usuario no autorizado
+INFO - Operación exitosa
+ERROR - Conexión fallida
