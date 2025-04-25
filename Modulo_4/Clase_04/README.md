@@ -1,6 +1,6 @@
 # Ejercicios
 
-## Ejercicio 1 - Generador de ID para los empleados (Intermedio)
+## [Ejercicio 1 - Generador de ID para los empleados (Intermedio)](exercises/src/test/java/TestExercise1.java)
 La empresa ABCD tiene hasta 100 empleados. La compañía decide crear un número de identificación único UID para cada uno de sus empleados. La compañía le ha asignado la tarea de validar los UIDs generados aleatoriamente.  
 Un UID válido debe cumplir con las siguientes reglas:
 - Debe contener por lo menos dos letras mayúsculas en el alfabeto inglés.
