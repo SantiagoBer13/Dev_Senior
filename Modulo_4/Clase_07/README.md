@@ -82,7 +82,7 @@ Combina el uso de `Comparable` y `Comparator`:
 
 Prueba ordenando una lista de libros con diversos datos.
 
-## Ejercicio 7: Uso básico de `ConcurrentHashMap`
+## [Ejercicio 7: Uso básico de `ConcurrentHashMap`](exercises/src/main/java/com/code/Inventario.java)
 Crea un programa que simule un inventario de productos en una tienda. Usa un `ConcurrentHashMap` para almacenar:
 - **Clave**: El nombre del producto (String).
 - **Valor**: La cantidad disponible (Integer).
@@ -94,7 +94,7 @@ Crea un programa que simule un inventario de productos en una tienda. Usa un `Co
 
 **Reto adicional**: Implementa un método para buscar un producto específico de manera segura mientras los hilos están realizando modificaciones.
 
-## Ejercicio 8: Uso de `CopyOnWriteArrayList`
+## [Ejercicio 8: Uso de `CopyOnWriteArrayList`](exercises/src/main/java/com/code/Chat.java)
 Simula una sala de chat en la que múltiples usuarios pueden unirse o abandonar de forma concurrente. Usa un `CopyOnWriteArrayList` para almacenar:
 - Una lista de nombres de usuarios (String).
 
@@ -105,7 +105,7 @@ Simula una sala de chat en la que múltiples usuarios pueden unirse o abandonar 
 
 **Reto adicional**: Muestra un mensaje cada vez que alguien se une o abandona el chat.
 
-## Ejercicio 9: Uso de `ConcurrentLinkedQueue`
+## [Ejercicio 9: Uso de `ConcurrentLinkedQueue`](exercises/src/main/java/com/code/Banco.java)
 Simula un sistema de colas en un banco usando `ConcurrentLinkedQueue`. Los clientes llegan y se añaden a la cola para ser atendidos.
 
 **Tareas a realizar**:
@@ -115,7 +115,7 @@ Simula un sistema de colas en un banco usando `ConcurrentLinkedQueue`. Los clien
 
 **Reto adicional**: Implementa un tiempo de espera para atender a los clientes con la clase `Thread.sleep()`.
 
-## Ejercicio 10: Uso de `BlockingQueue` (Productor-Consumidor)
+## [Ejercicio 10: Uso de `BlockingQueue` (Productor-Consumidor)](exercises/src/main/java/com/code/ProductorConsumidor.java)
 Implementa el clásico problema productor-consumidor usando una `ArrayBlockingQueue` de capacidad fija (por ejemplo, 5 elementos).
 
 **Tareas a realizar**:
