@@ -14,7 +14,7 @@ import java.util.List;
 
 public class EjercicioMongoDB {
     public static void main(String[] args) {
-        String uri = "mongodb+srv://bernaltinjacasantiago113:12345@sistemagestioneventos.azwqs.mongodb.net/?retryWrites=true&w=majority";
+        String uri = "introduce_your_uri";
 
         try (MongoClient mongoClient = MongoClients.create(uri)) {
             MongoDatabase database = mongoClient.getDatabase("sistemagestioneventos");
