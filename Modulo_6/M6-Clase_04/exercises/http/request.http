@@ -1,0 +1,48 @@
+##
+
+GET http://localhost:8080/api/book HTTP/1.1
+
+###
+
+GET http://localhost:8080/api/book/book-2 HTTP/1.1
+
+###
+
+
+GET http://localhost:8080/api/book/read HTTP/1.1
+
+###
+
+POST http://localhost:8080/api/book HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Title book",
+    "author": "Author",
+    "description": "Description of book.",
+    "isRead": true
+}
+
+###
+
+PUT http://localhost:8080/api/book/book-2 HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Mil novecientos ochenta y cuatro",
+    "author": "George Orwell",
+    "description": "A dystopian future",
+    "id": "book-2",
+    "read": true
+}
+
+###
+
+DELETE  http://localhost:8080/api/book/book-2 HTTP/1.1
+
+###
+
+PATCH http://localhost:8080/api/book/book-2 HTTP/1.1
+content-type: application/json
+
+
