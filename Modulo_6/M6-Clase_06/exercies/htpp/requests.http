@@ -1,0 +1,381 @@
+### Variables de entorno para el archivo de requests
+@baseUrl = http://localhost:8080
+@contentType = application/json
+
+### ========================================
+### CLIENTES - Operaciones CRUD
+### ========================================
+
+### 1. Obtener todos los clientes
+GET {{baseUrl}}/api/clients
+Content-Type: {{contentType}}
+
+### 2. Crear un nuevo cliente
+POST {{baseUrl}}/api/clients
+Content-Type: {{contentType}}
+
+{
+    "name": "Juan Pérez",
+    "email": "juan.perez@email.com",
+    "phone": "+57 300 123 4567"
+}
+
+### 3. Crear otro cliente
+POST {{baseUrl}}/api/clients
+Content-Type: {{contentType}}
+
+{
+    "name": "María García",
+    "email": "maria.garcia@ocati.com",
+    "phone": "3109876543"
+}
+
+### 4. Crear cliente empresarial
+POST {{baseUrl}}/api/clients
+Content-Type: {{contentType}}
+
+{
+    "name": "Empresa ABC Ltda",
+    "email": "contacto@empresaabc.com",
+    "phone": "+57 1 234 5678"
+}
+
+### 5. Obtener cliente por id
+GET {{baseUrl}}/api/clients/1
+Content-Type: :{{contentType}}
+
+### 6. Eliminar Cliente por id
+DELETE {{baseUrl}}/api/clients/1
+Content-Type: :{{contentType}}
+
+### ========================================
+### PRODUCTOS - Operaciones CRUD Completas
+### ========================================
+
+### 1. Obtener todos los productos
+GET {{baseUrl}}/api/products
+Content-Type: {{contentType}}
+
+### 2. Crear un nuevo producto
+POST {{baseUrl}}/api/products
+Content-Type: {{contentType}}
+
+
+### 2. Crear producto
+POST {{baseUrl}}/api/products
+Content-Type: {{contentType}}
+
+{
+    "name": "Gulupa Taiwor",
+    "price": 250.0,
+    "description": "PASSION FRUIT"
+}
+
+### 4. Crear producto sin descripción
+POST {{baseUrl}}/api/products
+Content-Type: {{contentType}}
+
+{
+    "name": "Milagrosa",
+    "price": 89.99
+}
+
+### 5. Obtener producto por ID específico
+GET {{baseUrl}}/api/products/1
+Content-Type: {{contentType}}
+
+### 6. Buscar productos por nombre (búsqueda parcial, ignorando mayúsculas/minúsculas)
+GET {{baseUrl}}/api/products/nombre?name=gulupa
+Content-Type: {{contentType}}
+
+### 7. Buscar productos por nombre (otro ejemplo)
+GET {{baseUrl}}/api/products/nombre?name=uchu
+Content-Type: {{contentType}}
+
+### 9. Buscar productos por precio (menores o iguales al precio especificado)
+GET {{baseUrl}}/api/products/precio?priceMin=100.00?priceMax=150.00
+Content-Type: {{contentType}}
+
+### 11. Eliminar producto por ID
+DELETE {{baseUrl}}/api/products/1
+Content-Type: {{contentType}}
+
+### 12. Verificar que se eliminó (debería dar 404)
+GET {{baseUrl}}/api/products/1
+Content-Type: {{contentType}}
+
+### ========================================
+### ÓRDENES - Operaciones CRUD Completas
+### ========================================
+
+### 1. Crear una orden
+POST {{baseUrl}}/api/orders
+Content-Type: {{contentType}}
+
+{
+    "client": {
+        "id": 3
+    },
+    "total": 150.00,
+    "status": "PENDING"
+}
+
+### 2. Obtener todas las órdenes
+GET {{baseUrl}}/api/orders
+Content-Type: {{contentType}}
+
+### 3. Obtener orden por ID
+GET {{baseUrl}}/api/orders/1
+Content-Type: {{contentType}}
+
+### 4. Buscar órdenes por cliente
+GET {{baseUrl}}/api/orders/client/1
+Content-Type: {{contentType}}
+
+### 5. Buscar órdenes por estado
+GET {{baseUrl}}/api/orders/status/PENDING
+Content-Type: {{contentType}}
+
+### 6. Buscar órdenes por cliente y estado
+GET {{baseUrl}}/api/orders/client/1/status/PENDING
+Content-Type: {{contentType}}
+
+### 7. Buscar órdenes por rango de fechas
+GET {{baseUrl}}/api/orders/date-range?startDate=2025-08-01&endDate=2025-08-31
+Content-Type: {{contentType}}
+
+### 8. Buscar órdenes por rango de total
+GET {{baseUrl}}/api/orders/total-range?minTotal=100.00&maxTotal=500.00
+Content-Type: {{contentType}}
+
+### 9. Obtener órdenes activas
+GET {{baseUrl}}/api/orders/active
+Content-Type: {{contentType}}
+
+### 10. Estadísticas de órdenes por estado
+GET {{baseUrl}}/api/orders/stats/count-by-status
+Content-Type: {{contentType}}
+
+### 11. Total de ventas por cliente
+GET {{baseUrl}}/api/orders/stats/sales-by-client
+Content-Type: {{contentType}}
+
+### 12. Cambiar estado de orden
+PUT {{baseUrl}}/api/orders/1/status?newStatus=SENT
+Content-Type: {{contentType}}
+
+### 13. Calcular total de orden
+GET {{baseUrl}}/api/orders/1/total
+Content-Type: {{contentType}}
+
+### 14. Actualizar orden
+PUT {{baseUrl}}/api/orders/1
+Content-Type: {{contentType}}
+
+{
+    "client": {
+        "id": 1
+    },
+    "total": 200.00,
+    "status": "SENT"
+}
+
+### 15. Eliminar orden
+DELETE {{baseUrl}}/api/orders/1
+Content-Type: {{contentType}}
+
+### ========================================
+### ITEMS DE ORDEN - Operaciones CRUD Completas
+### ========================================
+
+### 1. Crear item de orden
+POST {{baseUrl}}/api/order-items
+Content-Type: {{contentType}}
+
+{
+    "order": {
+        "id": 3
+    },
+    "product": {
+        "id": 3
+    },
+    "quantity": 4,
+    "unitPrice": 25.00
+}
+
+### 2. Obtener todos los items
+GET {{baseUrl}}/api/order-items
+Content-Type: {{contentType}}
+
+### 3. Obtener item por ID
+GET {{baseUrl}}/api/order-items/1
+Content-Type: {{contentType}}
+
+### 4. Buscar items por orden
+GET {{baseUrl}}/api/order-items/order/1
+Content-Type: {{contentType}}
+
+### 5. Buscar items por producto
+GET {{baseUrl}}/api/order-items/product/1
+Content-Type: {{contentType}}
+
+### 6. Buscar items por orden y producto
+GET {{baseUrl}}/api/order-items/order/1/product/1
+Content-Type: {{contentType}}
+
+### 7. Buscar items con cantidad mayor a X
+GET {{baseUrl}}/api/order-items/quantity-greater-than?quantity=3
+Content-Type: {{contentType}}
+
+### 8. Buscar items con precio unitario mayor a X
+GET {{baseUrl}}/api/order-items/unit-price-greater-than?unitPrice=50.00
+Content-Type: {{contentType}}
+
+### 9. Buscar items por rango de subtotal
+GET {{baseUrl}}/api/order-items/subtotal-range?minSubtotal=100.00&maxSubtotal=500.00
+Content-Type: {{contentType}}
+
+### 10. Análisis de ventas por producto
+GET {{baseUrl}}/api/order-items/analytics/sales-by-product
+Content-Type: {{contentType}}
+
+### 11. Productos más vendidos
+GET {{baseUrl}}/api/order-items/analytics/top-selling-products
+Content-Type: {{contentType}}
+
+### 12. Productos más rentables
+GET {{baseUrl}}/api/order-items/analytics/top-revenue-products
+Content-Type: {{contentType}}
+
+### 13. Items por rango de fechas
+GET {{baseUrl}}/api/order-items/date-range?startDate=2024-01-01&endDate=2024-12-31
+Content-Type: {{contentType}}
+
+### 14. Estadísticas de ventas por fecha
+GET {{baseUrl}}/api/order-items/analytics/sales-statistics-by-date?startDate=2024-01-01&endDate=2024-12-31
+Content-Type: {{contentType}}
+
+### 15. Calcular subtotal de item
+GET {{baseUrl}}/api/order-items/1/subtotal
+Content-Type: {{contentType}}
+
+### 16. Recalcular total de orden
+POST {{baseUrl}}/api/order-items/order/1/recalculate-total
+Content-Type: {{contentType}}
+
+### 17. Actualizar item de orden
+PUT {{baseUrl}}/api/order-items/1
+Content-Type: {{contentType}}
+
+{
+    "order": {
+        "id": 3
+    },
+    "product": {
+        "id": 3
+    },
+    "quantity": 3,
+    "unitPrice": 30.00
+}
+
+### 18. Eliminar item de orden
+DELETE {{baseUrl}}/api/order-items/1
+Content-Type: {{contentType}}
+
+### ========================================
+### CONSULTAS DE PRUEBA - Verificar relaciones
+### ========================================
+
+### 1. Verificar que se crearon las tablas en PostgreSQL
+# Ejecuta en tu cliente PostgreSQL:
+# \dt
+# \d clients
+# \d products
+# \d orders
+# \d order_items
+
+### 2. Verificar datos insertados
+# SELECT * FROM clients;
+# SELECT * FROM products;
+# SELECT * FROM orders;
+# SELECT * FROM order_items;
+
+### ========================================
+### ESCENARIOS DE PRUEBA COMPLETOS
+### ========================================
+
+### Escenario 1: Crear cliente y verificar
+# 1. Ejecuta la solicitud POST para crear cliente
+# 2. Ejecuta GET para verificar que se creó
+# 3. Verifica en la base de datos
+
+### Escenario 2: Crear múltiples clientes
+# 1. Ejecuta las 3 solicitudes POST de clientes
+# 2. Ejecuta GET para ver todos los clientes
+# 3. Verifica que se crearon 3 registros
+
+### Escenario 3: Prueba completa de productos
+# 1. Crea 3 productos diferentes (POST /api/products)
+# 2. Obtén todos los productos (GET /api/products)
+# 3. Busca productos por nombre (GET /api/products/nombre?name=laptop)
+# 4. Busca productos por precio (GET /api/products/precio?price=100.00)
+# 5. Obtén un producto específico por ID (GET /api/products/1)
+# 6. Elimina un producto (DELETE /api/products/1)
+# 7. Verifica que se eliminó (GET /api/products/1) - debería dar 404
+
+### Escenario 4: Búsquedas avanzadas de productos
+# 1. Crea productos con nombres similares (ej: "Laptop HP", "Laptop Dell")
+# 2. Prueba búsqueda parcial: /api/products/nombre?name=laptop
+# 3. Prueba búsqueda por precio: /api/products/precio?price=500.00
+# 4. Verifica que las búsquedas funcionen correctamente
+
+### Escenario 5: Verificar relaciones (cuando implementes órdenes)
+# 1. Crea un cliente
+# 2. Crea productos
+# 3. Crea una orden asociada al cliente
+# 4. Crea items de orden asociados a la orden y productos
+# 5. Verifica las relaciones en la base de datos
+
+### ========================================
+### PRUEBAS DE FUNCIONALIDAD ESPECÍFICA
+### ========================================
+
+### Prueba de búsqueda por nombre (case-insensitive)
+# 1. Crea productos: "Laptop HP", "laptop dell", "LAPTOP ASUS"
+# 2. Busca con: /api/products/nombre?name=laptop
+# 3. Debería encontrar los 3 productos (ignorando mayúsculas/minúsculas)
+
+### Prueba de búsqueda por precio
+# 1. Crea productos con precios: 25.99, 50.00, 75.50, 100.00
+# 2. Busca con: /api/products/precio?price=60.00
+# 3. Debería encontrar productos con precio <= 60.00
+
+### Prueba de validaciones
+# 1. Intenta crear producto sin nombre (debería fallar)
+# 2. Intenta crear producto con precio negativo (debería fallar)
+# 3. Intenta crear producto con precio 0 (debería fallar)
+# 4. Verifica que solo se creen productos válidos
+
+### ========================================
+### NOTAS IMPORTANTES
+### ========================================
+
+### 1. Asegúrate de que tu aplicación esté ejecutándose en el puerto 8080
+### 2. Verifica que PostgreSQL esté activo y accesible
+### 3. Las tablas se crearán automáticamente gracias a JPA
+### 4. Los endpoints de órdenes están comentados hasta que implementes el controlador
+### 5. Usa este archivo para probar cada funcionalidad paso a paso
+
+### ========================================
+### COMANDOS DE VERIFICACIÓN
+### ========================================
+
+### Verificar que la aplicación esté funcionando
+GET {{baseUrl}}/actuator/health
+Content-Type: {{contentType}}
+
+### Verificar logs de la aplicación
+# Revisa la consola de tu aplicación Spring Boot para ver:
+# - Las consultas SQL generadas por Hibernate
+# - Los mensajes de creación de tablas
+# - Cualquier error que pueda ocurrir
