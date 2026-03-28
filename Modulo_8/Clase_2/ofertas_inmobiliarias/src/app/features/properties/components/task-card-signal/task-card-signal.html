@@ -1,0 +1,41 @@
+<li class="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col gap-4">
+
+  <!-- Header -->
+  <div class="flex justify-between items-start">
+    <div>
+      <p class="text-lg font-semibold text-gray-800">
+        {{ task().name }}
+      </p>
+      <p class="text-sm text-gray-500">
+        👤 {{ task().responsible }}
+      </p>
+    </div>
+
+    <!-- Estado -->
+    <span
+      class="px-3 py-1 text-xs font-semibold rounded-full"
+      [ngClass]="{
+        'bg-green-100 text-green-700': task().state === 'completed',
+        'bg-yellow-100 text-yellow-700': task().state !== 'completed'
+      }">
+      {{ task().state === 'completed' ? 'Completado' : 'Pendiente' }}
+    </span>
+  </div>
+
+  <!-- Fechas -->
+  <div class="flex justify-between text-sm text-gray-500">
+    <span>📅 {{ task().date_start | date:'shortDate' }}</span>
+    <span>→</span>
+    <span>{{ task().date_finish | date:'shortDate' }}</span>
+  </div>
+
+  <!-- Botón -->
+  <button
+    class="mt-2 w-full bg-indigo-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-indigo-700 transition-all duration-300 shadow hover:shadow-md disabled:opacity-50"
+    (click)="completedTask()"
+    [disabled]="task().state === 'completed'">
+    
+    {{ task().state === 'completed' ? 'Completada ✔' : 'Marcar como completada' }}
+  </button>
+
+</li>

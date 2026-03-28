@@ -1,0 +1,55 @@
+<div
+          class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+
+          <!-- Imagen -->
+          <img
+            [src]="property.imageUrl"
+            [alt]="property.name"
+            class="h-48 w-full object-cover">
+
+          <!-- Contenido -->
+          <div class="p-6 flex flex-col gap-3">
+
+            <h2 class="text-2xl font-bold text-gray-800">
+              {{ property.name }}
+            </h2>
+
+            <p class="text-gray-600 text-sm line-clamp-3">
+              {{ property.description }}
+            </p>
+
+            <!-- Manager -->
+            <div class="text-sm text-gray-500">
+              <span class="font-semibold text-gray-700">Manager:</span>
+              {{ property.manager }}
+            </div>
+
+            <!-- Fechas -->
+            <div class="text-sm text-gray-500 space-y-1">
+              <div>
+                <span class="font-semibold">Inicio:</span>
+                {{ property.date_start | date:'mediumDate' }}
+              </div>
+              <div>
+                <span class="font-semibold">Entrega estimada:</span>
+                {{ property.date_estimated | date:'mediumDate' }}
+              </div>
+            </div>
+
+            <!-- Tareas -->
+            <div class="mt-2 text-sm text-gray-600">
+              <span class="font-semibold">
+                Tareas:
+              </span>
+              {{ property.tasks.length }}
+            </div>
+
+            <!-- Acción -->
+            <button
+                    class="mt-6 w-full bg-indigo-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-indigo-700 transition-colors duration-300 shadow-md hover:shadow-lg"
+      (click)="onViewDetailsClick()">
+              Ver detalles
+            </button>
+
+          </div>
+        </div>
